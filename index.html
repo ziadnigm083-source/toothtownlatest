@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ToothTown Dental Center</title>
+<!-- Site CSS. Keep this BEFORE the Tailwind script: when two rules tie, the one loaded later wins,
+     and the original page relied on Tailwind's utility classes winning over these. -->
+<style>
+  body {
+    background: radial-gradient(circle at top, #fff8dc 0%, #ffffff 40%, #eefdfc 100%);
+    font-family: 'Baloo 2', ui-rounded, cursive;
+  }
+  .tone-blue { background-color: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
+  .tone-pink { background-color: #fce7f3; color: #be185d; border-color: #fbcfe8; }
+  .tone-yellow { background-color: #fef9c3; color: #854d0e; border-color: #fef08a; }
+  .tone-orange { background-color: #ffedd5; color: #c2410c; border-color: #fed7aa; }
+  .tone-green { background-color: #d1fae5; color: #047857; border-color: #a7f3d0; }
+  .tone-teal { background-color: #ccfbf1; color: #0f766e; border-color: #99f6e4; }
+  .nav-btn { border-radius: 9999px; padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 500; transition: all 0.15s; color: #475569; }
+  .nav-btn:hover { background-color: #f1f5f9; }
+  .nav-btn.active { background-color: #0ea5e9; color: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+  .nav-dropdown-menu { position: absolute; top: calc(100% + 8px); left: 0; min-width: 11rem; background: white; border: 1px solid #e2e8f0; border-radius: 1rem; box-shadow: 0 10px 25px rgba(15,23,42,0.1); padding: 0.4rem; z-index: 60; }
+  .nav-dropdown-item { display: block; width: 100%; text-align: left; padding: 0.55rem 0.75rem; border-radius: 0.65rem; font-size: 0.875rem; font-weight: 500; color: #475569; background: none; border: none; cursor: pointer; }
+  .nav-dropdown-item:hover { background-color: #f1f5f9; }
+  .nav-dropdown-item.active { background-color: #e0f2fe; color: #0369a1; }
+  .mobile-nav-btn { border-radius: 1rem; padding: 0.75rem 1rem; text-align: left; font-size: 0.875rem; font-weight: 500; background-color: #f8fafc; color: #334155; }
+  .mobile-nav-btn.active { background-color: #f0f9ff; color: #0369a1; }
+  .card { border-radius: 2rem; border: 1px solid white; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .card:hover.hoverable { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+  .hoverable { transition: all 0.2s; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  [data-lucide] { width: 1.25rem; height: 1.25rem; }
+
+  /* Home hero photo carousel */
+  #hero-slideshow { position: relative; width: 100%; height: 100%; overflow: hidden; }
+  .hero-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 0.6s ease-in-out; }
+  .hero-slide.active { opacity: 1; }
+  .hero-dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: rgba(255,255,255,0.6); transition: all 0.2s; cursor: pointer; }
+  .hero-dot.active { background: #ffffff; width: 1.5rem; }
+
+  .font-display { font-family: 'Baloo 2', ui-rounded, cursive; }
+  .highlight-word { position: relative; display: inline-block; }
+  .highlight-word .highlight-bg { position: absolute; left: -2px; right: -2px; bottom: 4px; height: 45%; background: #fde047; border-radius: 6px; z-index: 0; }
+  .highlight-word .highlight-text { position: relative; z-index: 1; color: #0d9488; }
+
+  .faq-item { border-radius: 1.25rem; border: 1px solid white; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.06); overflow: hidden; }
+  .faq-question { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.4rem; text-align: left; font-weight: 700; color: #0f172a; background: none; border: none; cursor: pointer; }
+  .faq-chevron { transition: transform 0.25s ease; flex-shrink: 0; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 1.4rem; color: #475569; font-size: 0.925rem; line-height: 1.6; }
+  .faq-item.open .faq-answer { padding: 0 1.4rem 1.2rem; }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal[data-in-view] { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Reviews */
+  .review-card { border-radius: 1.5rem; border: 1px solid white; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .review-hidden { display: none; }
+  .star-row [data-lucide="star"] { width: 1rem; height: 1rem; }
+  .star-filled { color: #f59e0b; fill: #f59e0b; }
+  .star-empty { color: #e2e8f0; fill: #e2e8f0; }
+
+  /* Location photo carousels and subtle interaction polish */
+  .location-carousel-image-wrap { position: relative; overflow: hidden; border-radius: 1.25rem; aspect-ratio: 16 / 10; background: #f1f5f9; }
+  .location-carousel-image { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease, opacity .3s ease; animation: locationPhotoIn .35s ease both; }
+  .location-carousel-image-wrap:hover .location-carousel-image { transform: scale(1.025); }
+  .location-carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border: 0; border-radius: 9999px; color: #334155; background: rgba(255,255,255,.92); box-shadow: 0 4px 14px rgba(15,23,42,.16); cursor: pointer; transition: transform .2s ease, background .2s ease; }
+  .location-carousel-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.08); }
+  .location-carousel-prev { left: .75rem; } .location-carousel-next { right: .75rem; }
+  .location-carousel-count { position: absolute; right: .75rem; bottom: .75rem; border-radius: 9999px; padding: .25rem .65rem; color: white; background: rgba(15,23,42,.62); font-size: .75rem; }
+  .location-carousel-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: .4rem; padding-top: 1rem; }
+  .location-carousel-dot { width: .45rem; height: .45rem; padding: 0; border: 0; border-radius: 9999px; background: #cbd5e1; cursor: pointer; transition: width .2s ease, background .2s ease; }
+  .location-carousel-dot.active { width: 1.25rem; background: #ec4899; }
+  .hoverable { transition: transform .22s ease, box-shadow .22s ease; }
+  .hoverable:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(15,23,42,.09); }
+  a, button { transition-property: color, background-color, border-color, box-shadow, transform; transition-duration: .2s; }
+  @keyframes locationPhotoIn { from { opacity: .55; transform: scale(1.01); } to { opacity: 1; transform: scale(1); } }
+  @media (prefers-reduced-motion: reduce) { .location-carousel-image, .location-carousel-arrow, .location-carousel-dot, .hoverable, a, button { transition: none !important; animation: none !important; } }
+
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen text-slate-900">
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+/* ToothTown extra motion. Additive only: same colours, layout and behaviour.
+   Loaded after animations.css (see main.jsx). Reduced-motion users are covered by the
+   global rule at the bottom of animations.css plus the guard at the end of this file. */
+
+/* ---------- Fix: "View gallery" pill covering the photo counter ----------
+   Both used to sit in the bottom-right corner. The counter now sits bottom-left,
+   vertically centred against the pill. */
+.location-carousel .location-carousel-count {
+  right: auto;
+  left: .75rem;
+  bottom: 17px;
+}
+
+/* ---------- Fix: hover lift on cards that also scroll-reveal ----------
+   Revealed cards kept the reveal's slow 0.7s transition and its staggered delay, and the
+   reveal's transform beat the hover transform. Once the reveal has finished
+   (data-revealed, set in useReveal.js) the element gets fast, delay-free hover motion. */
+.reveal[data-revealed] {
+  transition: transform .32s var(--tt-motion), box-shadow .32s var(--tt-motion), border-color .32s ease, background-color .2s ease;
+  transition-delay: 0ms !important;
+}
+.reveal[data-revealed].card:hover,
+.reveal[data-revealed].hoverable:hover,
+.reveal[data-revealed].review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, .10);
+}
+
+/* ---------- Scroll reveal: cards also ease up from a touch smaller ---------- */
+.card.reveal:not([data-in-view]),
+.review-card.reveal:not([data-in-view]),
+.branch-gallery-folder.reveal:not([data-in-view]) {
+  transform: translateY(22px) scale(.97);
+}
+
+/* ---------- Page / tab change ---------- */
+.tab-panel.active { animation: tt-panel-in .45s var(--tt-motion) backwards; }
+@keyframes tt-panel-in { from { opacity: 0; } }
+
+/* ---------- Header ---------- */
+header { transition: box-shadow .3s ease; }
+html[data-scrolled] header { box-shadow: 0 8px 28px rgba(15, 23, 42, .07); }
+header button:hover > img { transform: rotate(-5deg) scale(1.06); }
+header img { transition: transform .45s cubic-bezier(.34, 1.56, .64, 1); }
+
+.nav-dropdown-menu:not(.hidden) { transform-origin: top left; animation: tt-drop-in .22s var(--tt-motion) backwards; }
+header > div.border-t:not(.hidden) { animation: tt-drop-in .25s var(--tt-motion) backwards; }
+.nav-dropdown-item { transition: background-color .15s ease, color .15s ease, transform .2s var(--tt-motion); }
+.nav-dropdown-item:hover { transform: translateX(3px); }
+@keyframes tt-drop-in { from { opacity: 0; transform: translateY(-6px) scale(.97); } }
+
+/* ---------- Home ---------- */
+/* Slow zoom on the active hero photo. Inactive slides rest at the end scale, so the
+   cross-fade never snaps. */
+.hero-slide { transform: scale(1.06); }
+.hero-slide.active { animation: tt-kenburns 6s linear both; }
+@keyframes tt-kenburns { from { transform: scale(1); } to { transform: scale(1.06); } }
+
+/* Yellow highlight behind "smile" sweeps in. */
+.highlight-word .highlight-bg { transform-origin: left center; animation: tt-sweep .8s var(--tt-motion) .5s backwards; }
+@keyframes tt-sweep { from { transform: scaleX(0); } }
+
+/* Decorative blurred blobs drift gently (and shift slightly while scrolling, via useScrollEffects). */
+.tt-blob { animation: tt-float 8s ease-in-out infinite alternate; }
+.tt-blob-b { animation-duration: 10s; animation-delay: -3s; }
+@keyframes tt-float {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(10px, -14px, 0) scale(1.08); }
+}
+
+/* ---------- Small interactions ---------- */
+/* Icons in their coloured badges give a little wiggle when the card is hovered. */
+.rounded-2xl.p-3 > [data-lucide],
+.rounded-full.p-2 > [data-lucide],
+.branch-folder-icon > [data-lucide] { transition: transform .4s cubic-bezier(.34, 1.56, .64, 1); }
+.card:hover .rounded-2xl.p-3 > [data-lucide],
+.hoverable:hover .rounded-2xl.p-3 > [data-lucide],
+.card:hover .rounded-full.p-2 > [data-lucide],
+.branch-gallery-folder:hover .branch-folder-icon > [data-lucide] { transform: scale(1.14) rotate(-6deg); }
+
+/* "→" arrows in buttons nudge forward on hover. */
+a [data-lucide="arrow-right"].ml-2,
+button [data-lucide="arrow-right"].ml-2 { transition: transform .25s var(--tt-motion); }
+a:hover [data-lucide="arrow-right"].ml-2,
+button:hover [data-lucide="arrow-right"].ml-2 { transform: translateX(4px); }
+
+/* Carousel dots and lightbox extras. */
+.location-carousel-dot:not(.active):hover { background: #f9a8d4; }
+.photo-lightbox-thumbs button { transition: opacity .2s ease, border-color .2s ease, transform .2s var(--tt-motion); }
+.photo-lightbox-thumbs button:hover { opacity: 1; }
+.photo-lightbox-thumbs button img { transition: transform .3s var(--tt-motion); }
+.photo-lightbox-thumbs button:hover img { transform: scale(1.1); }
+.photo-lightbox-close:hover { transform: rotate(90deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tt-blob, .hero-slide.active { animation: none; }
+  .hero-slide { transform: none; }
+  [data-parallax] { translate: none !important; }
+}
