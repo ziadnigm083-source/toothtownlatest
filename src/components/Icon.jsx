@@ -1,14 +1,16 @@
 import {
-  Activity, ArrowRight, BellRing, Camera, CheckCircle2, ChevronDown, ChevronLeft,
-  ChevronRight, Clock3, ClipboardCheck, Crown, DoorOpen, Gem, Gift, HeartHandshake,
+  Activity, ArrowLeft, ArrowRight, BellRing, Camera, CheckCircle2, ChevronDown, ChevronLeft,
+  ChevronRight, Clock3, ClipboardCheck, Crown, DoorOpen, Gem, Gift, Globe, HeartHandshake,
   HeartPulse, Image as ImageIcon, Images, FolderOpen, Maximize2, X, Layers3, LayoutGrid, Leaf, Mail, MapPin, Menu, Moon,
   Phone, ShieldCheck, Smile, Sparkles, Star, Stethoscope, UserRound,
 } from "lucide-react";
+import { useLang } from "../i18n";
 
 // Same icon names the original page used with <i data-lucide="...">.
 const ICONS = {
   "activity": Activity,
   "arrow-right": ArrowRight,
+  "globe": Globe,
   "bell-ring": BellRing,
   "camera": Camera,
   "check-circle-2": CheckCircle2,
@@ -46,7 +48,9 @@ const ICONS = {
 
 // data-lucide is kept on purpose: the original CSS sizes icons with [data-lucide].
 export default function Icon({ name, className }) {
-  const Cmp = ICONS[name];
+  const { isAr } = useLang();
+  // The "→" arrow points the other way when the page is read right-to-left.
+  const Cmp = name === "arrow-right" && isAr ? ArrowLeft : ICONS[name];
   if (!Cmp) return null;
   return <Cmp data-lucide={name} className={className} />;
 }

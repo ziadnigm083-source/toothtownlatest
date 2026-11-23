@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>
+  /* Apply the saved language before the page paints, so Arabic never flashes as English first. */
+  try { if (localStorage.getItem("toothtown-lang") === "ar") { document.documentElement.lang = "ar"; document.documentElement.dir = "rtl"; } } catch (e) {}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="/favicon.png?v=4" />
 <title>ToothTown Dental Center</title>
@@ -10,7 +14,7 @@
 <style>
   body {
     background: radial-gradient(circle at top, #fff8dc 0%, #ffffff 40%, #eefdfc 100%);
-    font-family: 'Baloo 2', ui-rounded, cursive;
+    font-family: 'Baloo 2', 'Baloo Bhaijaan 2', ui-rounded, cursive;
   }
   .tone-blue { background-color: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
   .tone-pink { background-color: #fce7f3; color: #be185d; border-color: #fbcfe8; }
@@ -41,7 +45,7 @@
   .hero-dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: rgba(255,255,255,0.6); transition: all 0.2s; cursor: pointer; }
   .hero-dot.active { background: #ffffff; width: 1.5rem; }
 
-  .font-display { font-family: 'Baloo 2', ui-rounded, cursive; }
+  .font-display { font-family: 'Baloo 2', 'Baloo Bhaijaan 2', ui-rounded, cursive; }
   .highlight-word { position: relative; display: inline-block; }
   .highlight-word .highlight-bg { position: absolute; left: -2px; right: -2px; bottom: 4px; height: 45%; background: #fde047; border-radius: 6px; z-index: 0; }
   .highlight-word .highlight-text { position: relative; z-index: 1; color: #0d9488; }
@@ -87,7 +91,10 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Baloo 2 has no Arabic letters. Baloo Bhaijaan 2 is the Arabic version of the very same Baloo family,
+     so Arabic text keeps the same rounded, friendly look. -->
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="min-h-screen text-slate-900">
 <div id="root"></div>

@@ -1,0 +1,55 @@
+/* Arabic / right-to-left support.
+   Everything here only applies while the page is in Arabic (html[dir="rtl"] / html[lang="ar"]),
+   so the English layout is untouched. */
+
+/* ---------- Letter-spacing breaks Arabic joining, so switch it off ---------- */
+html[lang="ar"] *,
+html[lang="ar"] *::before,
+html[lang="ar"] *::after { letter-spacing: 0 !important; }
+/* ...but keep the ToothTown wordmark exactly as in English. */
+html[lang="ar"] .tt-brand,
+html[lang="ar"] .tt-brand * { letter-spacing: -0.025em !important; }
+
+/* Arabic letters sit taller than Latin ones; give wrapped headings room. */
+html[lang="ar"] h1 { line-height: 1.4; }
+html[lang="ar"] h2, html[lang="ar"] h3 { line-height: 1.45; }
+html[lang="ar"] body { line-height: 1.6; }
+html[lang="ar"] .leading-6 { line-height: 1.85; }
+html[lang="ar"] .leading-8 { line-height: 2.1; }
+html[lang="ar"] .faq-answer { line-height: 1.9; }
+
+/* ---------- Text alignment ---------- */
+[dir="rtl"] .text-left { text-align: right; }
+[dir="rtl"] .nav-dropdown-item,
+[dir="rtl"] .mobile-nav-btn,
+[dir="rtl"] .faq-question { text-align: right; }
+
+/* ---------- Header dropdown opens from the right ---------- */
+[dir="rtl"] .nav-dropdown-menu { left: auto; right: 0; }
+[dir="rtl"] .nav-dropdown-menu:not(.hidden) { transform-origin: top right; }
+[dir="rtl"] .nav-dropdown-item:hover { transform: translateX(-3px); }
+
+/* ---------- Spacing that was written for left-to-right ---------- */
+[dir="rtl"] .ml-2 { margin-left: 0; margin-right: 0.5rem; }
+[dir="rtl"] .-space-x-3 > :not([hidden]) ~ :not([hidden]) { --tw-space-x-reverse: 1; }
+
+/* The "→" icon is swapped for "←" in Arabic (see Icon.jsx); its hover nudge goes the other way. */
+[dir="rtl"] a:hover [data-lucide="arrow-right"].ml-2,
+[dir="rtl"] button:hover [data-lucide="arrow-right"].ml-2 { transform: translateX(-4px); }
+
+/* Yellow highlight behind "smile" sweeps in from the right. */
+[dir="rtl"] .highlight-word .highlight-bg { transform-origin: right center; }
+
+/* ---------- Header: keep the nav + language button from overflowing ---------- */
+.lang-switch { white-space: nowrap; }
+@media (min-width: 768px) and (max-width: 1279px) {
+  header nav { gap: 0.25rem; }
+  header nav .nav-btn { padding-left: 0.65rem; padding-right: 0.65rem; white-space: nowrap; }
+}
+
+/* Photo carousels, galleries and the lightbox are media controls: keep them identical in
+   both languages (left arrow = previous) so photos always behave the same way. */
+[dir="rtl"] .photo-lightbox,
+[dir="rtl"] .location-carousel,
+[dir="rtl"] #hero-slideshow { direction: ltr; }
+[dir="rtl"] .photo-lightbox-heading { direction: rtl; }

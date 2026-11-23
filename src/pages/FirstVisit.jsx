@@ -2,14 +2,16 @@ import Panel from "../components/Panel";
 import Icon from "../components/Icon";
 import { rv } from "../hooks/useReveal";
 import { visitSteps } from "../data";
+import { useLang } from "../i18n";
 
 export default function FirstVisit({ active }) {
+  const { t } = useLang();
   return (
     <Panel active={active} className="space-y-10">
       <div className="max-w-2xl mx-auto text-center">
-        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-emerald-600">Your first visit</p>
-        <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Four easy steps to a happy smile</h2>
-        <p className="mt-4 text-slate-600">No surprises — here's exactly how your child's first ToothTown adventure goes.</p>
+        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-emerald-600">{t("Your first visit")}</p>
+        <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{t("Four easy steps to a happy smile")}</h2>
+        <p className="mt-4 text-slate-600">{t("No surprises — here's exactly how your child's first ToothTown adventure goes.")}</p>
       </div>
 
       <div className="relative hidden sm:block">
@@ -29,8 +31,8 @@ export default function FirstVisit({ active }) {
         {visitSteps.map((step, i) => (
           <div key={step.title} {...rv(i, "card p-6")}>
             <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl" style={{ background: `${step.color}22`, color: step.color }}><Icon name={step.icon} /></div>
-            <h3 className="text-lg font-bold text-slate-900">{step.title}</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-600">{step.text}</p>
+            <h3 className="text-lg font-bold text-slate-900">{t(step.title)}</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{t(step.text)}</p>
           </div>
         ))}
       </div>

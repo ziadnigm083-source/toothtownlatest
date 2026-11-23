@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import WhatsAppButton from "./components/WhatsAppButton";
 import { useRevealObserver } from "./hooks/useReveal";
 import { useScrollEffects } from "./hooks/useScrollEffects";
 import { orthodonticServices, pediatricServices } from "./data";
@@ -155,6 +156,7 @@ export default function App() {
       </main>
 
       <Footer activeTab={activeTab} setTab={setTab} />
+      <WhatsAppButton />
     </>
   );
 }

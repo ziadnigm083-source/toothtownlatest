@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import Panel from "../components/Panel";
 import Icon from "../components/Icon";
 import PhotoLightbox from "../components/PhotoLightbox";
+import { useLang } from "../i18n";
 
 const branchGalleries = [
   { id: "sporting", name: "Alexandria • Sporting", folder: "sporting", count: 15 },
@@ -11,6 +12,7 @@ const branchGalleries = [
 const galleryPhotos = (folder, count) => Array.from({ length: count }, (_, i) => `/images/${folder}/${String(i + 1).padStart(2, "0")}.jpg`);
 
 export default function Gallery({ active }) {
+  const { t, tPhotos } = useLang();
   const [opened, setOpened] = useState(null);
   const [photoIndex, setPhotoIndex] = useState(0);
   const openGallery = (branch) => { setOpened(branch); setPhotoIndex(0); };
@@ -23,25 +25,25 @@ export default function Gallery({ active }) {
   return (
     <Panel active={active} className="space-y-10">
       <div className="max-w-2xl reveal">
-        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-[#f79a1f]">Gallery</p>
-        <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">A look inside ToothTown</h2>
-        <p className="mt-3 text-slate-500">Choose a branch to explore its photos.</p>
+        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-[#f79a1f]">{t("Gallery")}</p>
+        <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{t("A look inside ToothTown")}</h2>
+        <p className="mt-3 text-slate-500">{t("Choose a branch to explore its photos.")}</p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {branchGalleries.map((branch, i) => {
           const photos = galleryPhotos(branch.folder, branch.count);
           return (
             <button type="button" key={branch.id} className="branch-gallery-folder hoverable reveal text-left" style={{ transitionDelay: `${i * 90}ms` }} onClick={() => openGallery(branch)}>
-              <div className="branch-gallery-cover"><img src={photos[0]} alt={`${branch.name} clinic`} loading="lazy" /><span className="branch-gallery-open"><Icon name="images" /> Open gallery</span></div>
+              <div className="branch-gallery-cover"><img src={photos[0]} alt={`${t(branch.name)} ${t("clinic")}`} loading="lazy" /><span className="branch-gallery-open"><Icon name="images" /> {t("Open gallery")}</span></div>
               <div className="flex items-center justify-between gap-3 p-4">
-                <div><h3 className="font-bold text-slate-900">{branch.name}</h3><p className="mt-1 text-sm text-slate-500">{branch.count} photos</p></div>
+                <div><h3 className="font-bold text-slate-900">{t(branch.name)}</h3><p className="mt-1 text-sm text-slate-500">{tPhotos(branch.count)}</p></div>
                 <span className="branch-folder-icon"><Icon name="folder-open" /></span>
               </div>
             </button>
           );
         })}
       </div>
-      {opened && <PhotoLightbox photos={galleryPhotos(opened.folder, opened.count)} index={photoIndex} onClose={closeGallery} onChange={changePhoto} title={opened.name} />}
+      {opened && <PhotoLightbox photos={galleryPhotos(opened.folder, opened.count)} index={photoIndex} onClose={closeGallery} onChange={changePhoto} title={t(opened.name)} />}
     </Panel>
   );
 }

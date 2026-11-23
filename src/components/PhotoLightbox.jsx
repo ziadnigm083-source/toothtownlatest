@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import Icon from "./Icon";
+import { useLang } from "../i18n";
 
 export default function PhotoLightbox({ photos, index, onClose, onChange, title }) {
+  const { t, isAr } = useLang();
   useEffect(() => {
     if (index < 0) return;
     const onKeyDown = (event) => {
@@ -22,17 +24,17 @@ export default function PhotoLightbox({ photos, index, onClose, onChange, title 
   if (index < 0 || !photos?.length) return null;
   const move = (step) => onChange(step);
   return createPortal(
-    <div className="photo-lightbox" role="dialog" aria-modal="true" aria-label={`${title} photo gallery`} onClick={onClose}>
-      <button className="photo-lightbox-close" onClick={onClose} aria-label="Close gallery"><Icon name="x" /></button>
+    <div className="photo-lightbox" role="dialog" aria-modal="true" aria-label={isAr ? `معرض صور ${title}` : `${title} photo gallery`} onClick={onClose}>
+      <button className="photo-lightbox-close" onClick={onClose} aria-label={t("Close gallery")}><Icon name="x" /></button>
       <div className="photo-lightbox-content" onClick={(event) => event.stopPropagation()}>
         <div className="photo-lightbox-heading"><span>{title}</span><span>{index + 1} / {photos.length}</span></div>
         <div className="photo-lightbox-stage">
-          <button className="photo-lightbox-arrow photo-lightbox-prev" onClick={() => move(-1)} aria-label="Previous photo"><Icon name="chevron-left" /></button>
+          <button className="photo-lightbox-arrow photo-lightbox-prev" onClick={() => move(-1)} aria-label={t("Previous photo")}><Icon name="chevron-left" /></button>
           <img key={photos[index]} src={photos[index]} alt={`${title} ${index + 1}`} />
-          <button className="photo-lightbox-arrow photo-lightbox-next" onClick={() => move(1)} aria-label="Next photo"><Icon name="chevron-right" /></button>
+          <button className="photo-lightbox-arrow photo-lightbox-next" onClick={() => move(1)} aria-label={t("Next photo")}><Icon name="chevron-right" /></button>
         </div>
         <div className="photo-lightbox-thumbs">
-          {photos.map((photo, i) => <button key={photo} className={i === index ? "selected" : ""} onClick={() => onChange(i - index)} aria-label={`Open photo ${i + 1}`}><img src={photo} alt="" /></button>)}
+          {photos.map((photo, i) => <button key={photo} className={i === index ? "selected" : ""} onClick={() => onChange(i - index)} aria-label={isAr ? `فتح الصورة ${i + 1}` : `Open photo ${i + 1}`}><img src={photo} alt="" /></button>)}
         </div>
       </div>
     </div>,
