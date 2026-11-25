@@ -56,7 +56,7 @@ export function LanguageProvider({ children }) {
     const root = document.documentElement;
     root.setAttribute("lang", lang);
     root.setAttribute("dir", isAr ? "rtl" : "ltr");
-    document.title = isAr ? "ToothTown مركز طب الأسنان" : "ToothTown Dental Center";
+    document.title = isAr ? "ToothTown مركز طب الأسنان | الإسكندرية والقاهرة، مصر" : "ToothTown Dental Center | Alexandria & Cairo, Egypt";
     try { window.localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* ignore */ }
   }, [lang, isAr]);
 
