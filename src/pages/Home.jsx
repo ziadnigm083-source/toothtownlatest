@@ -24,7 +24,7 @@ export default function Home({ active, setTab }) {
           {t("Welcome to")}{" "}<span dir="ltr" className="tt-brand inline-block"><span className="text-sky-500">Tooth</span><span className="text-orange-500">Town</span></span>
         </h1>
         <p className="font-display mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
-          {t("Where healthy")}{" "}<span className="highlight-word"><span className="highlight-bg"></span><span className="highlight-text">{t("smiles")}</span></span>{" "}{t("grow!")}
+          {t("Where healthy")}{" "}<span className="highlight-word"><span className="highlight-bg"></span><span className="highlight-text">{t("smile")}</span></span>{" "}{t("grows!")}
         </p>
       </div>
 
@@ -77,7 +77,7 @@ export default function Home({ active, setTab }) {
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="flex items-start gap-3 rounded-2xl tone-orange p-4">
                   <Icon name="phone" className="mt-0.5" />
-                  <div><p className="font-semibold text-slate-900">{t("Hotline")}</p><p className="text-sm text-slate-600"><a dir="ltr" href="tel:+201222289786" className="inline-block hover:underline">+20 12 22289786</a> · <a href="https://api.whatsapp.com/message/ZGTAIYDF2LGWI1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noreferrer" className="text-green-700 hover:underline">{t("WhatsApp")}</a></p></div>
+                  <div><p className="font-semibold text-slate-900">{t("Hotline")}</p><p className="text-sm text-slate-600"><a dir="ltr" href="tel:+201222289786" className="inline-block hover:underline">+20 12 22289786</a> · <a href="https://wa.me/201222289786" target="_blank" rel="noreferrer" className="text-green-700 hover:underline">{t("WhatsApp")}</a></p></div>
                 </div>
                 <div className="flex items-start gap-3 rounded-2xl tone-yellow p-4">
                   <Icon name="mail" className="mt-0.5" />
@@ -144,7 +144,7 @@ export default function Home({ active, setTab }) {
           <div className="p-6 space-y-4">
             <div className="flex items-start gap-3 rounded-2xl tone-pink p-4"><Icon name="map-pin" className="mt-0.5" /><div><p className="font-semibold text-slate-900">{t("Locations")}</p><div className="mt-1 flex flex-col gap-1 text-sm text-slate-600">{branchContacts.map((b) => <a key={b.label} href={b.map} target="_blank" rel="noreferrer" className="hover:text-sky-600 hover:underline">📍 {t(b.label)}</a>)}</div></div></div>
             <div className="flex items-start gap-3 rounded-2xl tone-yellow p-4"><Icon name="mail" className="mt-0.5" /><div><p className="font-semibold text-slate-900">{t("Email")}</p><p className="text-sm text-slate-600">toothtown@yahoo.com</p></div></div>
-            <div className="flex items-start gap-3 rounded-2xl tone-green p-4"><Icon name="phone" className="mt-0.5" /><div><p className="font-semibold text-slate-900">{t("Hotline")}</p><p className="text-sm text-slate-600"><a dir="ltr" href="tel:+201222289786" className="inline-block hover:underline">+20 12 22289786</a> · <a href="https://api.whatsapp.com/message/ZGTAIYDF2LGWI1?autoload=1&app_absent=0&utm_source=ig" target="_blank" rel="noreferrer" className="text-green-700 hover:underline">{t("WhatsApp")}</a></p></div></div>
+            <div className="flex items-start gap-3 rounded-2xl tone-green p-4"><Icon name="phone" className="mt-0.5" /><div><p className="font-semibold text-slate-900">{t("Hotline")}</p><p className="text-sm text-slate-600"><a dir="ltr" href="tel:+201222289786" className="inline-block hover:underline">+20 12 22289786</a> · <a href="https://wa.me/201222289786" target="_blank" rel="noreferrer" className="text-green-700 hover:underline">{t("WhatsApp")}</a></p></div></div>
           </div>
         </div>
       </section>

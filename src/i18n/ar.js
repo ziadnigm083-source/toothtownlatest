@@ -47,8 +47,8 @@ export const ar = {
   // ---- home ----
   "Welcome to": "مرحبًا بكم في",
   "Where healthy": "حيث تنمو",
-  "smiles": "الابتسامات",
-  "grow!": "الصحية!",
+  "smile": "الابتسامة",
+  "grows!": "الصحية!",
   "Little Teeth..Big Smiles": "أسنان صغيرة.. ابتسامات كبيرة",
   "The first dental center for kids and orthodontics in Alexandria, now in Cairo.": "أول مركز لطب أسنان الأطفال وتقويم الأسنان في الإسكندرية، والآن في القاهرة.",
   "View Services": "عرض الخدمات",

@@ -25,8 +25,8 @@ export default function Header({ activeTab, setTab, mobileOpen, setMobileOpen, o
     <header className="sticky top-0 z-50 border-b border-white/70 bg-white/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8">
         <button onClick={() => setTab("Home")} className="flex shrink-0 items-center gap-3 rounded-2xl px-2 py-1 transition hover:bg-slate-50">
-          <img src={logo} alt={t("ToothTown logo")} className="h-16 w-16 rounded-2xl object-cover shadow-sm ring-4 ring-white bg-white" />
-          <div className="text-left leading-tight">
+          <img src={logo} alt={t("ToothTown logo")} className="tt-logo-img h-16 w-16 rounded-2xl object-cover shadow-sm ring-4 ring-white bg-white" />
+          <div className="tt-logo-text text-left leading-tight">
             <div className="tt-brand text-lg font-black tracking-tight text-slate-900">ToothTown</div>
             <div className="text-xs font-medium text-slate-500">{t("Dental Center")}</div>
           </div>

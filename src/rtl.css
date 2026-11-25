@@ -53,3 +53,13 @@ html[lang="ar"] .faq-answer { line-height: 1.9; }
 [dir="rtl"] .location-carousel,
 [dir="rtl"] #hero-slideshow { direction: ltr; }
 [dir="rtl"] .photo-lightbox-heading { direction: rtl; }
+
+/* ---------- Small phones: make sure logo + language button + menu button always fit ---------- */
+header .tt-logo-text { min-width: 0; }
+@media (max-width: 420px) {
+  header .lang-switch { padding: 0.5rem 0.65rem; }
+  header .lang-switch svg { display: none; }
+}
+@media (max-width: 360px) {
+  header .tt-logo-img { width: 3.25rem; height: 3.25rem; }
+}

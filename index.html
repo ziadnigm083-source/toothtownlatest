@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="description" content="Pediatric dentistry, Orthodontics and family dental care at ToothTown. Find your nearest clinic in Alexandria or Cairo." />
 <meta charset="UTF-8" />
 <script>
   /* Apply the saved language before the page paints, so Arabic never flashes as English first. */
   try { if (localStorage.getItem("toothtown-lang") === "ar") { document.documentElement.lang = "ar"; document.documentElement.dir = "rtl"; } } catch (e) {}
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover" />
   <link rel="icon" type="image/png" href="/favicon.png?v=4" />
-<title>ToothTown Dental Center</title>
+<title>ToothTown Dental Center | Alexandria & Cairo, Egypt</title>
 <!-- Site CSS. Keep this BEFORE the Tailwind script: when two rules tie, the one loaded later wins,
      and the original page relied on Tailwind's utility classes winning over these. -->
 <style>
+  /* Never let anything push the page wider than the screen (stops sideways scroll / zoom-out on phones). */
+  html, body { max-width: 100%; overflow-x: hidden; }
+  @supports (overflow: clip) { html, body { overflow-x: clip; } }
   body {
     background: radial-gradient(circle at top, #fff8dc 0%, #ffffff 40%, #eefdfc 100%);
     font-family: 'Baloo 2', 'Baloo Bhaijaan 2', ui-rounded, cursive;

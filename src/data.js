@@ -52,7 +52,7 @@ export const orthodonticServices = [
 export const socialLinks = [
   { name: "Facebook", icon: "fa-brands fa-facebook", color: "#1877F2", handle: "ToothTown Dental Center", url: "https://www.facebook.com/ToothTown1/reels/" },
   { name: "Instagram", icon: "fa-brands fa-instagram", color: "#E1306C", handle: "tooth_town", url: "https://www.instagram.com/tooth_town/" },
-  { name: "Whatsapp", icon: "fa-brands fa-whatsapp", color: "#25D366", handle: "", url: "https://api.whatsapp.com/message/ZGTAIYDF2LGWI1?autoload=1&app_absent=0&utm_source=ig" },
+  { name: "Whatsapp", icon: "fa-brands fa-whatsapp", color: "#25D366", handle: "", url: "https://wa.me/201222289786" },
   { name: "Tiktok", icon: "fa-brands fa-tiktok", color: "#000000", handle: "tooth_town", url: "https://www.tiktok.com/@tooth_town?_r=1&_t=zs-91wovkasg1g" },
   { name: "Linktree", svgPath: "M7.953 15.066c-.08.163-.08.324-.08.486.08.517.528.897 1.052.89h1.294v4.776c0 .486-.404.89-.89.89H6.577a.898.898 0 0 1-.889-.891v-4.774H.992c-.728 0-1.214-.729-.89-1.377l6.96-12.627a1.065 1.065 0 0 1 1.863 0l2.913 5.585-3.885 7.042zm15.945 0l-6.96-12.627a1.065 1.065 0 0 0-1.862 0l-2.995 5.586 3.885 7.04c.081.164.081.326.081.487-.08.517-.529.897-1.052.89h-1.296v4.776c.005.49.4.887.89.89h2.914a.9.9 0 0 0 .892-.89v-4.775h4.612c.73 0 1.214-.729.89-1.377Z", color: "#43E660", handle: "ToothTown Dental Center", url: "https://linktr.ee/_ToothTownDentalCenter_?utm_source=linktree_profile_share&ltsid=4df7d8b7-80a7-4881-ac26-73fe53ca52f1&utm_medium=social&utm_content=link_in_bio" },
 ];

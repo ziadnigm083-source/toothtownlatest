@@ -1,8 +1,9 @@
 import { useLang } from "../i18n";
 import "./WhatsAppButton.css";
 
-// Hotline WhatsApp link (same one the Home page uses for the hotline).
-const HOTLINE_WHATSAPP_URL = "https://api.whatsapp.com/message/ZGTAIYDF2LGWI1?autoload=1&app_absent=0&utm_source=ig";
+// Hotline WhatsApp link: wa.me/<number> is WhatsApp's universal link and opens the app on phones
+// (and WhatsApp Web on computers). Number = the hotline +20 12 22289786, in international format.
+const HOTLINE_WHATSAPP_URL = "https://wa.me/201222289786";
 
 // Small floating WhatsApp button, fixed to the right edge of the screen on every page.
 // Works on phones and desktops: touch-friendly size, respects notches / home bars,
