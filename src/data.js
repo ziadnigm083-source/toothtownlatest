@@ -100,7 +100,7 @@ export const locations = [
   { label: "Alexandria • Agamy", url: "https://maps.app.goo.gl/xL2FuwEAjUoLwMKi6" },
   { label: "Alexandria • Victoria", url: "https://maps.app.goo.gl/g8LHfCERs3qAtEwz6?g_st=ic" },
   { label: "Cairo • Dokki", url: "https://maps.app.goo.gl/hvZnfSMh8Uzv3pBH6" },
-  { label: "New Cairo • FamBam", url: "https://maps.app.goo.gl/Xq6ifmkM5zrWC8cB6" },
+  { label: "New Cairo • FamBam", url: "https://maps.app.goo.gl/ckRKc7LmGDcmc6L76" },
 ];
 
 export const team = [
@@ -161,5 +161,5 @@ export const branchContacts = [
   { label: "Alexandria • Agamy", phone: "0127 7993838", whatsapp: "https://wa.me/message/AXA4UYV45MGHO1", map: "https://maps.app.goo.gl/xL2FuwEAjUoLwMKi6" },
   { label: "Alexandria • Victoria", phone: "0120 5006001", whatsapp: "https://wa.me/201205006001", map: "https://maps.app.goo.gl/g8LHfCERs3qAtEwz6?g_st=ic" },
   { label: "Cairo • Dokki", phone: "0112 9988110", whatsapp: "https://wa.me/message/GCRZANWIC3DZB1", map: "https://maps.app.goo.gl/hvZnfSMh8Uzv3pBH6" },
-  { label: "New Cairo • FamBam", phone: "0122 2385969", whatsapp: "https://wa.me/message/DYMSMMGNDCPDA1", map: "https://maps.app.goo.gl/Xq6ifmkM5zrWC8cB6" },
+  { label: "New Cairo • FamBam", phone: "0122 2385969", whatsapp: "https://wa.me/message/DYMSMMGNDCPDA1", map: "https://maps.app.goo.gl/ckRKc7LmGDcmc6L76" },
 ];

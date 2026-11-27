@@ -211,7 +211,7 @@ export const ar = {
   "Open branch page for current hours": "افتح صفحة الفرع لمعرفة مواعيد العمل الحالية",
   "View on Google Maps": "عرض على خرائط Google",
   "Map link coming soon": "رابط الخريطة قريبًا",
-  "ToothTown Location": "فرع ToothTown",
+  "ToothTown Branch": "فرع ToothTown",
   "Hours": "مواعيد العمل",
   "View gallery": "عرض المعرض",
 

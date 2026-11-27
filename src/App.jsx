@@ -26,7 +26,7 @@ const locationPages = [
   { label: "Alexandria • Agamy", sub: "Egypt", tone: "pink", url: "https://maps.app.goo.gl/xL2FuwEAjUoLwMKi6", hotline: "0127 7993838", hours: ["Sat–Thu • 10:00 AM – 10:00 PM", "Friday • 2:00 PM – 10:00 PM"] },
   { label: "Alexandria • Victoria", sub: "Egypt", tone: "yellow", url: "https://maps.app.goo.gl/g8LHfCERs3qAtEwz6?g_st=ic", hotline: "0120 5006001", hours: ["Sat–Thu • 10:00 AM – 10:00 PM", "Friday • 3:00 PM – 9:00 PM"] },
   { label: "Cairo • Dokki", sub: "Egypt", tone: "orange", url: "https://maps.app.goo.gl/hvZnfSMh8Uzv3pBH6", hotline: "0112 9988110", hours: ["Sat–Thu • 10:00 AM – 10:00 PM", "Friday • 2:00 PM – 8:00 PM"], photos: [1, 2, 4, 5, 6].map((i) => `/images/dokki/${String(i).padStart(2, "0")}.jpg`) },
-  { label: "New Cairo • FamBam", sub: "Egypt", tone: "green", url: "https://maps.app.goo.gl/Xq6ifmkM5zrWC8cB6", hotline: "0122 2385969", hours: ["Sat–Thu • 10:00 AM – 10:00 PM", "Friday • 2:00 PM – 10:00 PM"], photos: Array.from({ length: 7 }, (_, i) => `/images/fambam/${String(i + 1).padStart(2, "0")}.jpg`) },
+  { label: "New Cairo • FamBam", sub: "Egypt", tone: "green", url: "https://maps.app.goo.gl/ckRKc7LmGDcmc6L76", hotline: "0122 2385969", hours: ["Sat–Thu • 10:00 AM – 10:00 PM", "Friday • 2:00 PM – 10:00 PM"], photos: Array.from({ length: 7 }, (_, i) => `/images/fambam/${String(i + 1).padStart(2, "0")}.jpg`) },
 ];
 
 

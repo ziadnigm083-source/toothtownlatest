@@ -19,7 +19,7 @@ export default function LocationPage({ active, label, sub, tone, url, hours, hot
   return (
     <Panel active={active} className="space-y-10">
       <div className="max-w-3xl">
-        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-[#f79a1f]">{t("ToothTown Location")}</p>
+        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-[#f79a1f]">{t("ToothTown Branch")}</p>
         <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{t(label)}</h2>
         <div className="mt-3 space-y-1 text-slate-500">
           {(hours || ["Sat–Thu • 10:00 AM – 10:00 PM"]).map((hour) => (
